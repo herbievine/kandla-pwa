@@ -27,9 +27,9 @@ function NewsletterPage() {
   const { newsletterEmails } = useSuspenseNewsletterEmails(newsletterId);
 
   return (
-    <div className="p-12 flex flex-col space-y-6">
+    <div className="px-4 py-8 flex flex-col space-y-6">
       <h1 className="text-xl">Emails</h1>
-      <ul>
+      <ul className="flex flex-col">
         {newsletterEmails?.map((email) => (
           <li key={email.id}>
             <Link to="/email/$emailId" params={{ emailId: email.id }}>
