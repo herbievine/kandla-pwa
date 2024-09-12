@@ -61,6 +61,7 @@ function EmailPage() {
         src={`${import.meta.env.VITE_API_URL}/emails/${emailId}`}
         width="100%"
         height="100%"
+        sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
         onLoad={() => setEmailSeen()}
       />
     </div>
