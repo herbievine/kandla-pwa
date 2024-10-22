@@ -1,4 +1,4 @@
-import { createRoute, Link } from "@tanstack/react-router";
+import { createRoute } from "@tanstack/react-router";
 import { rootRoute } from "./__root";
 import { z } from "zod";
 import { useSearch } from "../api/use-search";
