@@ -19,22 +19,6 @@ function IndexPage() {
   return (
     <div className="flex flex-col">
       <h1 className="p-4 font-black text-xl">Your feed</h1>
-      {/*<ul className="grid grid-cols-1 gap-4">
-      //   {emails?.map((emails) => (
-      //     <li
-      //       key={emails.id}
-      //       className="w-full border border-neutral-300 rounded-md"
-      //     >
-      //       <Link
-      //         to="/email/$emailId"
-      //         params={{ emailId: emails.id }}
-      //         className="block w-full h-full px-4 py-2"
-      //       >
-      //         <span className="line-clamp-1">{emails.subject}</span>
-      //       </Link>
-      //     </li>
-      //   ))}
-      // </ul> */}
       <ul className="flex flex-col border-y border-neutral-300 divide-y divide-neutral-300">
         {feed?.map((email) => (
           <li key={email.id} className="w-full">

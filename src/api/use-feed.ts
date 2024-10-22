@@ -1,9 +1,10 @@
 import { queryOptions, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { fetcher } from "../lib/fetcher";
 import { z } from "zod";
+import dayjs from "dayjs";
 
 async function getFeed() {
-  return fetcher(
+  const feed = await fetcher(
     `${import.meta.env.VITE_API_URL}/feed`,
     z.array(
       z.object({
@@ -20,6 +21,8 @@ async function getFeed() {
       },
     },
   );
+
+  return feed.sort((a, b) => (dayjs(a.createdAt).isBefore(dayjs(b.createdAt)) ? 1 : -1));
 }
 
 export function feedOptions() {
