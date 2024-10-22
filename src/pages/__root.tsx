@@ -12,7 +12,7 @@ export const rootRoute = createRootRoute({
 function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex flex-col text-sm md:text-base">
+      <div className="flex flex-col text-xs md:text-base">
         {/* <header className="h-12 w-full sticky top-0 bg-white">
           <nav className="flex justify-between items-center p-4 _border-b _border-neutral-300">
             <div>

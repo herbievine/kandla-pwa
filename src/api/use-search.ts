@@ -2,9 +2,13 @@ import { queryOptions, useQuery, useSuspenseQuery } from "@tanstack/react-query"
 import { fetcher } from "../lib/fetcher";
 import { z } from "zod";
 
-async function getNewsletters() {
+async function getSearch(q: string) {
+  const searchParams = new URLSearchParams();
+
+  searchParams.set("query", q);
+
   return fetcher(
-    `${import.meta.env.VITE_API_URL}/users/${import.meta.env.VITE_USER_ID}/newsletters`,
+    `${import.meta.env.VITE_API_URL}/search?${searchParams}`,
     z.array(
       z.object({
         id: z.string(),
@@ -21,28 +25,28 @@ async function getNewsletters() {
   );
 }
 
-export function newslettersOptions() {
+export function searchOptions(q: string) {
   return queryOptions({
-    queryKey: ["newsletters"],
-    queryFn: () => getNewsletters(),
+    queryKey: ["search", q],
+    queryFn: () => getSearch(q),
     staleTime: 10 * 1000,
   });
 }
 
-export function useNewsletters() {
-  const { data, ...query } = useQuery(newslettersOptions());
+export function useSearch(q: string) {
+  const { data, ...query } = useQuery(searchOptions(q));
 
   return {
-    newsletters: data,
+    search: data,
     ...query,
   };
 }
 
-export function useSuspenseNewsletters() {
-  const { data, ...query } = useSuspenseQuery(newslettersOptions());
+export function useSuspenseSearch(q: string) {
+  const { data, ...query } = useSuspenseQuery(searchOptions(q));
 
   return {
-    newsletters: data,
+    search: data,
     ...query,
   };
 }
